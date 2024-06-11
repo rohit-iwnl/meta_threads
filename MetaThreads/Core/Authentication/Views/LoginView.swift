@@ -23,22 +23,15 @@ struct LoginView: View {
                 
                 VStack{
                     TextField("Enter your email", text: $email)
-                        .font(.subheadline)
-                        .padding(12)
-                        .background(Color(.systemGray5))
-                        .cornerRadius(10)
-                        .padding(.horizontal,24)
+                        .textInputAutocapitalization(.none)
+                        .modifier(ThreadsTextFieldModifier())
                     
                     SecureField("Enter your password", text: $password)
-                        .font(.subheadline)
-                        .padding(12)
-                        .background(Color(.systemGray5))
-                        .cornerRadius(10)
-                        .padding(.horizontal,24)
+                        .modifier(ThreadsTextFieldModifier())
                 }
                 
                 NavigationLink{
-                    Text("Forgot Password?")
+                    RegistrationView()
                 } label : {
                     Text("Forgot Password?")
                         .font(.footnote)
@@ -54,12 +47,7 @@ struct LoginView: View {
                     
                 } label : {
                     Text("Login")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.white)
-                        .frame(width:350, height: 44)
-                        .background(.black)
-                        .cornerRadius(12)
+                        .modifier(ThreadsAuthenticationButtonModifier())
                 }
                 
                 Spacer()
@@ -67,7 +55,7 @@ struct LoginView: View {
                 Divider()
                 
                 NavigationLink {
-                    Text("RegistrationView")
+                    RegistrationView()
                 } label: {
                     HStack(spacing: 4){
                         Text("Don't have an account?")
